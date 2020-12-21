@@ -1,0 +1,92 @@
+#TO WORK WITH A VIDEO FILE
+'''cap = cv2.VideoCapture(0);#when you have to read the video file this function is used, inside function give file name and in some cases you have to assign device index:0(webcam),-1
+
+while(True): #here we put while loop because we want access the video file continuously
+    ret, frame = cap.read() #ret(Boolean Variable) is the recognition of true or false in while loop; frame is a variable we store a video readable file in it and cap.read function to read the file name
+    cv2.imshow('Buzz',frame) #using Imshow('frame name(which is assign by user)' frame is a variable call)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'): #here we put the if condition because we assign the waitkey('Timing alloted') and on which case video should pause
+        break #after pressing 'q' key video should end or after the completion of time also
+
+cap.release() #to release a video file from camera or directory we use release() method
+cv2.destroyAllWindows() #for destroying running file WINDOW'''
+
+#IF WE WANT GRAY VIDEO COLOR
+'''cap = cv2.VideoCapture(0);
+
+while(True): #
+    ret, frame = cap.read() #
+
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) #gray is the variable, 'cvtColor' is a method for color, frame: call the video variable and assign the color what we want in frame variable: 'cv2.COLOR_BGR2GRAY' for gray color
+    cv2.imshow('Buzz',gray) #
+
+    if cv2.waitKey(1) & 0xFF == ord('q'): #
+        break #
+
+cap.release() #
+cv2.destroyAllWindows()'''
+     #----------------------------******************-------------------------------
+#while(cap.isOpened())#is for check the file is present or not, if present it execute the program and if not it return false
+
+#cap.get(cv2.CAP_PROP_FRAME_HEIGHT) #if we want to find a height of wiindow
+#cap.get(cv2.CAP_PROP_FRAME_WIDTH) #if we want to find a width of window and more such type of method find on google
+
+#to save a video file
+#fourcc is 4 byte code which is use to specify the codec
+'''cap = cv2.VideoCapture(0);
+fourcc = cv2.VideoWriter_fourcc(*'XVID') #now we get the foucc code (as an 4 Byte argument pass *'XVID)
+out = cv2.VideoWriter('Output.avi', fourcc, 20.00, (640,480)) #out(variable) Videowriter is method of calss cv2  for video creating and 'Output.avi' is a file name which we want to save; 2nd argument is pass an fourcc, 20(No. of frame per second), 640,480 (is number of size)
+
+while(cap.isOpened()): #
+    ret, frame = cap.read() #
+    if ret == True: #if ret returns the true then and only then the next code runs
+
+        out.write(frame) #out is the instance call the write method; frame is the stored the read variable
+
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) #gray is the variable, 'cvtColor' is a method for color, frame: call the video variable and assign the color what we want in frame variable: 'cv2.COLOR_BGR2GRAY' for gray color
+        cv2.imshow('Buzz',gray) #
+
+        if cv2.waitKey(1) & 0xFF == ord('q'): #
+            break #
+        else:
+            break
+
+cap.release() #
+out.release() #for releasing the out variable
+cv2.destroyAllWindows()'''
+
+#to perform geometric operation on images
+
+'''img = cv2.imread('lena.jpg',1)
+img = cv2.line(img, (0,0), (255,255), (147,64,33), 10)
+img = cv2.circle(img, (447,63), 63, (0, 255, 0),10)
+img = cv2.putText(img, 'OpenCV', (10,500), cv2.FONT_HERSHEY_COMPLEX, 4, (0,255,255), 10,cv2.LINE_AA )
+cv2.imshow('image', img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()'''
+
+#to set the size of the window into short form
+'''print(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+print(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+cap.set(90, 1280) #we can set height by calling 90 instead cv2.CAP_PROP_FRAME_HEIGHT 
+cap.set(91, 800) #we can set height by calling 91 instead cv2.CAP_PROP_FRAME_WIDTH '''
+
+#to show date on video
+'''import datetime
+cap = cv2.VideoCapture(0)
+
+while(cap.isOpened()):
+    ret, frame = cap.read()
+    if ret == True:
+
+        font = cv2.FONT_HERSHEY_COMPLEX #we created the font variable and assign the font type
+        datet = str(datetime.datetime.now()) #after importing datetime module use datetimme now function
+        frame = cv2.putText(frame, datet, (10, 50), font, 1, (0,255,255), 2, cv2.LINE_AA) # frame is a variable and insider frame is a frame name and others are the syntax of 'putText' method
+        cv2.imshow('frame', frame) #after all the necessary step get onthe imshow method
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    else:
+        break
+cap.release()
+cv2.destroyAllWindows()'''
